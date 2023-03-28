@@ -2,22 +2,13 @@
 
 export function loggerMe(): void {
 
-interface myPersonalData {
-  name: string;
-  secondName: string;
-  age?: number;
-}
-
-const myObj: myPersonalData = {
-  name: 'Sasha',
-  secondName: 'Grygoriev',
-  age: 38
-}
-
-console.log(myObj['secondName']);
 
 
+  const confirmMe: string | null = prompt('do you want me?', '');
 
+  confirmMe !== null  ? console.log(confirmMe) : console.log(`it's empty answer. It's very unpleasant`);
+
+  console.log(confirmMe + "10");
 
 
 

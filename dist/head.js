@@ -1,8 +1,5 @@
 export function loggerMe() {
-    const myObj = {
-        name: 'Sasha',
-        secondName: 'Grygoriev',
-        age: 38
-    };
-    console.log(myObj['secondName']);
+    const confirmMe = prompt('do you want me?', '');
+    confirmMe !== null ? console.log(confirmMe) : console.log(`it's empty answer. It's very unpleasant`);
+    console.log(confirmMe + "10");
 }
