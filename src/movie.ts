@@ -24,21 +24,24 @@
 Проверить, чтобы все работало без ошибок в консоли */
 
 export function movie() {
+
   interface PersonalMovieDB {
-    count: string;
+    count: number;
     movies: any;
     actors: unknown;
     genres: string[];
     private: boolean;
   }
 
-  let numberOfFilms = prompt(
-    'Сколько фильмов вы уже посмотрели?',
-    ''
-  );
+  // let numberOfFilms = prompt(
+  //   'Сколько фильмов вы уже посмотрели?',
+  //   ''
+  // );
+
+  const numberOfFilms = 5;
 
   const personalMovieDB: PersonalMovieDB = {
-    count: numberOfFilms as string,
+    count: numberOfFilms as number,
     movies: {},
     actors: {},
     genres: [],
