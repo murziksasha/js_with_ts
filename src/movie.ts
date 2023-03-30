@@ -1,30 +1,7 @@
-/* Задание на урок:
 
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
-
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
-
-    
-
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
-    }
-
-Проверить, чтобы все работало без ошибок в консоли */
+'use strict';
 
 export function movie() {
-
   interface PersonalMovieDB {
     count: number;
     movies: any;
@@ -33,45 +10,62 @@ export function movie() {
     private: boolean;
   }
 
-  // let numberOfFilms = prompt(
-  //   'Сколько фильмов вы уже посмотрели?',
-  //   ''
-  // );
+  let numberOfFilms: string | number | null = prompt(
+    'Сколько фильмов вы уже посмотрели?',
+    ''
+  );
 
-  const numberOfFilms = 5;
+  // const numberOfFilms = 5;
 
   const personalMovieDB: PersonalMovieDB = {
-    count: numberOfFilms as number,
+    count: typeof numberOfFilms === 'string' ? +numberOfFilms: numberOfFilms = 0,
     movies: {},
     actors: {},
     genres: [],
     private: false,
   };
 
+  if (personalMovieDB.count < 10) {
+    console.log('Просмотрено довольно мало фильмов');
+  } else if (
+    personalMovieDB.count < 30 &&
+    personalMovieDB.count >= 10
+  ) {
+    console.log('Вы классический зритель');
+  } else if (personalMovieDB.count >= 30) {
+    console.log('Вы киноман');
+  } else {
+    console.log('Some error');
+  }
+
   const answersTo = (): void => {
-    let questionWhatMovie: string | null = prompt(
-      'Один из последних просмотренных фильмов?',
-      ''
-    );
-    let questionWhatYourPrice: string | null = prompt(
-      'На сколько оцените его?',
-      ''
-    );
-    if (questionWhatMovie !== undefined && questionWhatMovie !== null) {
-      if(questionWhatYourPrice !== undefined && questionWhatYourPrice !== null) {
-        personalMovieDB.movies[questionWhatMovie] = questionWhatYourPrice;
+    for (let i = 0; i < 2; i++) {
+      let questionWhatMovie: string | null = prompt(
+        'Один из последних просмотренных фильмов?',
+        ''
+      );
+      let questionWhatYourPrice: string | null = prompt(
+        'На сколько оцените его?',
+        ''
+      );
+      if (
+        questionWhatMovie != '' &&
+        questionWhatMovie !== null &&
+        questionWhatMovie.length < 50 &&
+        questionWhatYourPrice != '' &&
+        questionWhatYourPrice !== null
+      ) {
+        personalMovieDB.movies[questionWhatMovie] =
+          questionWhatYourPrice;
+        console.log('done');
       } else {
-        questionWhatYourPrice = prompt(
-          'На сколько оцените его?',
-          ''
-        );
+        console.log('erorr');
+        i--;
       }
-    } else {
-      answersTo();
     }
+
     console.log(personalMovieDB);
   };
 
-  answersTo();
-
+  // answersTo();
 }

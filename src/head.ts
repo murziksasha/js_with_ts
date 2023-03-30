@@ -4,12 +4,6 @@ export function loggerMe(): void {
 
 
 
-  
-
-
-
-
-
 
 
 }
