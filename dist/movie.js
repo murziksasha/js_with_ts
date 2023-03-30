@@ -23,7 +23,11 @@
 
 Проверить, чтобы все работало без ошибок в консоли */
 export function movie() {
-    let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+    // let numberOfFilms = prompt(
+    //   'Сколько фильмов вы уже посмотрели?',
+    //   ''
+    // );
+    const numberOfFilms = 5;
     const personalMovieDB = {
         count: numberOfFilms,
         movies: {},
