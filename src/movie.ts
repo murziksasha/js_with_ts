@@ -10,12 +10,16 @@ export function movie() {
     private: boolean;
   }
 
-  let numberOfFilms: string | number | null = prompt(
-    'Сколько фильмов вы уже посмотрели?',
-    ''
-  );
+  let numberOfFilms: string | number | null;
 
-  // const numberOfFilms = 5;
+  function start () {
+    numberOfFilms = prompt(
+      'Сколько фильмов вы уже посмотрели?',
+      ''
+    );
+  }
+
+
 
   const personalMovieDB: PersonalMovieDB = {
     count: typeof numberOfFilms === 'string' ? +numberOfFilms: numberOfFilms = 0,
@@ -25,14 +29,15 @@ export function movie() {
     private: false,
   };
 
-  if (personalMovieDB.count < 10) {
+  if (personalMovieDB.count && personalMovieDB.count < 10) {
     console.log('Просмотрено довольно мало фильмов');
   } else if (
+    personalMovieDB.count &&
     personalMovieDB.count < 30 &&
     personalMovieDB.count >= 10
   ) {
     console.log('Вы классический зритель');
-  } else if (personalMovieDB.count >= 30) {
+  } else if (personalMovieDB.count && personalMovieDB.count >= 30) {
     console.log('Вы киноман');
   } else {
     console.log('Some error');
