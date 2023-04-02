@@ -1,7 +1,9 @@
 
 'use strict';
 
-export function movie() {
+export function movie(): void {
+
+
   interface PersonalMovieDB {
     count: number;
     movies: any;
@@ -10,9 +12,9 @@ export function movie() {
     private: boolean;
   }
 
-  let numberOfFilms: string | number | null;
+  let numberOfFilms: string | number | null = 0;
 
-  function start () {
+  function start (): void {
     numberOfFilms = prompt(
       'Сколько фильмов вы уже посмотрели?',
       ''
@@ -29,19 +31,47 @@ export function movie() {
     private: false,
   };
 
-  if (personalMovieDB.count && personalMovieDB.count < 10) {
-    console.log('Просмотрено довольно мало фильмов');
-  } else if (
-    personalMovieDB.count &&
-    personalMovieDB.count < 30 &&
-    personalMovieDB.count >= 10
-  ) {
-    console.log('Вы классический зритель');
-  } else if (personalMovieDB.count && personalMovieDB.count >= 30) {
-    console.log('Вы киноман');
-  } else {
-    console.log('Some error');
+  const showMyDb = (): void => {
+   !personalMovieDB.private ? console.log(personalMovieDB) : null;
   }
+
+  showMyDb();
+
+
+
+  const writeYourGenres = (): void => {
+    let answerFor: string | null = '';
+    for(let i = 0; i < 3; i++){
+      answerFor = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
+      if(answerFor && answerFor !== null){
+        personalMovieDB.genres[i] = answerFor;
+      } else {
+        i--;
+      }
+    }
+  }
+
+  // writeYourGenres();
+
+  function detectPersonalLevel(): void {
+    if (personalMovieDB.count && personalMovieDB.count < 10) {
+      console.log('Просмотрено довольно мало фильмов');
+    } else if (
+      personalMovieDB.count &&
+      personalMovieDB.count < 30 &&
+      personalMovieDB.count >= 10
+    ) {
+      console.log('Вы классический зритель');
+    } else if (personalMovieDB.count && personalMovieDB.count >= 30) {
+      console.log('Вы киноман');
+    } else {
+      console.log('Some error');
+    }
+  }
+
+  // detectPersonalLevel();
+
+
 
   const answersTo = (): void => {
     for (let i = 0; i < 2; i++) {
@@ -69,8 +99,7 @@ export function movie() {
       }
     }
 
-    console.log(personalMovieDB);
   };
-
+  
   // answersTo();
 }

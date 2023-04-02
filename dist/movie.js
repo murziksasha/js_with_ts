@@ -1,7 +1,9 @@
 'use strict';
 export function movie() {
-    let numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
-    // const numberOfFilms = 5;
+    let numberOfFilms = 0;
+    function start() {
+        numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
     const personalMovieDB = {
         count: typeof numberOfFilms === 'string' ? +numberOfFilms : numberOfFilms = 0,
         movies: {},
@@ -9,20 +11,40 @@ export function movie() {
         genres: [],
         private: false,
     };
-    if (personalMovieDB.count && personalMovieDB.count < 10) {
-        console.log('Просмотрено довольно мало фильмов');
+    const showMyDb = () => {
+        !personalMovieDB.private ? console.log(personalMovieDB) : null;
+    };
+    showMyDb();
+    const writeYourGenres = () => {
+        let answerFor = '';
+        for (let i = 0; i < 3; i++) {
+            answerFor = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
+            if (answerFor && answerFor !== null) {
+                personalMovieDB.genres[i] = answerFor;
+            }
+            else {
+                i--;
+            }
+        }
+    };
+    // writeYourGenres();
+    function detectPersonalLevel() {
+        if (personalMovieDB.count && personalMovieDB.count < 10) {
+            console.log('Просмотрено довольно мало фильмов');
+        }
+        else if (personalMovieDB.count &&
+            personalMovieDB.count < 30 &&
+            personalMovieDB.count >= 10) {
+            console.log('Вы классический зритель');
+        }
+        else if (personalMovieDB.count && personalMovieDB.count >= 30) {
+            console.log('Вы киноман');
+        }
+        else {
+            console.log('Some error');
+        }
     }
-    else if (personalMovieDB.count &&
-        personalMovieDB.count < 30 &&
-        personalMovieDB.count >= 10) {
-        console.log('Вы классический зритель');
-    }
-    else if (personalMovieDB.count && personalMovieDB.count >= 30) {
-        console.log('Вы киноман');
-    }
-    else {
-        console.log('Some error');
-    }
+    // detectPersonalLevel();
     const answersTo = () => {
         for (let i = 0; i < 2; i++) {
             let questionWhatMovie = prompt('Один из последних просмотренных фильмов?', '');
@@ -41,7 +63,6 @@ export function movie() {
                 i--;
             }
         }
-        console.log(personalMovieDB);
     };
     // answersTo();
 }
