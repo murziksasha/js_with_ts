@@ -1,30 +1,25 @@
 export function loggerMe(): void {
 
-  function getTimeFromMinutes(num: number): string {
 
-    let resultHours: number =  Math.floor(num / 60);
-    let resultMinutes: number = num % 60;
+  const family = ['Peter', 'Ann', 'Alex', 'Linda'];
 
-    const result =  `Это ${resultHours} часов и ${resultMinutes} минут`
-
-    if(typeof num !== 'number' || !Number.isInteger(num) || num < 0){
-      return "Ошибка, проверьте данные"
-    } else if (resultHours === 0){
-      return `Это ${resultHours} часов и ${resultMinutes} минут`;
-  } else if(resultHours === 1){
-      return `Это ${resultHours} час и ${resultMinutes} минут`;
-  }else if (resultHours > 1 && resultHours <= 4) {
-      return `Это ${resultHours} часа и ${resultMinutes} минут`;
-  } else if (resultHours >= 5 && resultHours <= 10) {
-      return `Это ${resultHours} часов и ${resultMinutes} минут`;
+  function showFamily(arr: string[]): string {
+    let result: string = '';
+    if(Array.isArray(arr) && arr.length > 0){
+      for(let i = 0; i < arr.length; i ++){
+        result += arr[i] + ' ';
+      }
+    }
+    return `Семья состоит из: ${result.trim()}`
   }
 
-    return result;
-
-
-  }
-
-  console.log(getTimeFromMinutes(50));
+  showFamily(family);
+  
+  // const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+  
+  // function standardizeStrings(arr) {
+      
+  // }
 
 
 
