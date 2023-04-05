@@ -35,15 +35,15 @@ export function movie(): void {
     genres: [],
     private: false,
     start: function(): void {
-      let answer: string | null | number = prompt('Сколько фильмов вы уже посмотрели?', '');
-
-      while(answer === '' || answer === null){
+      let answer: any | null = prompt('Сколько фильмов вы уже посмотрели?', '');
+      answer = parseInt(answer);
+      console.log(answer);
+      if(answer !== 'number' || answer === null || isNaN(answer)){
         answer = prompt('Сколько фильмов вы уже посмотрели?', '');
-      }
-
-      if (answer !== null){
+      } else {
         this.count = answer;
       }
+
     },
     showMyDb: function (): void {
       !personalMovieDB.private ? console.log(personalMovieDB) : null;

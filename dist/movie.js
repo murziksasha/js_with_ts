@@ -21,10 +21,12 @@ export function movie() {
         private: false,
         start: function () {
             let answer = prompt('Сколько фильмов вы уже посмотрели?', '');
-            while (answer === '' || answer === null) {
+            answer = parseInt(answer);
+            console.log(answer);
+            if (answer !== 'number' || answer === null || isNaN(answer)) {
                 answer = prompt('Сколько фильмов вы уже посмотрели?', '');
             }
-            if (answer !== null) {
+            else {
                 this.count = answer;
             }
         },
