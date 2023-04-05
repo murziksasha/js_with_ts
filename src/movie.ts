@@ -16,7 +16,7 @@
 
 export function movie(): void {
   interface PersonalMovieDB {
-    count: number | string | null ;
+    count: number ;
     movies: any;
     actors: unknown;
     genres: string[];
@@ -26,6 +26,7 @@ export function movie(): void {
     detectPersonalLevel: () => void;
     answersTo: () => void;
     start: () => void;
+    toggleVisibleMyDB: () => boolean;
   }
 
   const personalMovieDB: PersonalMovieDB = {
@@ -35,15 +36,22 @@ export function movie(): void {
     genres: [],
     private: false,
     start: function(): void {
-      let answer: any | null = prompt('Сколько фильмов вы уже посмотрели?', '');
-      answer = parseInt(answer);
-      console.log(answer);
-      if(answer !== 'number' || answer === null || isNaN(answer)){
-        answer = prompt('Сколько фильмов вы уже посмотрели?', '');
-      } else {
-        this.count = answer;
-      }
-
+      let answer: string | null =  prompt('Сколько фильмов вы уже посмотрели?', '');
+        if (answer === null || answer.trim() === "") {
+          personalMovieDB.start();
+        } else {
+          let number: number = parseInt(answer);
+          if (isNaN(number) || number === 0) {
+            console.log("Вы ввели не число или ноль");
+            personalMovieDB.start();
+          } else {
+            console.log(typeof number); // "number"
+            this.count = number;
+          }
+        }
+    },
+    toggleVisibleMyDB: function(): boolean {
+      return this.private = !this.private;
     },
     showMyDb: function (): void {
       !personalMovieDB.private ? console.log(personalMovieDB) : null;
@@ -55,23 +63,23 @@ export function movie(): void {
           `Ваш любимый жанр под номером ${i + 1}`,
           ''
         );
-        if (answerFor && answerFor !== null) {
-          personalMovieDB.genres[i] = answerFor;
+        if (answerFor && answerFor !== null && answerFor.trim() !== '') {
+          this.genres[i] = answerFor;
         } else {
           i--;
         }
       }
     },
     detectPersonalLevel: function(): void {
-      if (personalMovieDB.count && personalMovieDB.count < 10) {
+      if (this.count && this.count < 10) {
         console.log('Просмотрено довольно мало фильмов');
       } else if (
-        personalMovieDB.count &&
-        personalMovieDB.count < 30 &&
-        personalMovieDB.count >= 10
+        this.count &&
+        this.count < 30 &&
+        this.count >= 10
       ) {
         console.log('Вы классический зритель');
-      } else if (personalMovieDB.count && personalMovieDB.count >= 30) {
+      } else if (this.count && this.count >= 30) {
         console.log('Вы киноман');
       } else {
         console.log('Some error');
@@ -94,7 +102,7 @@ export function movie(): void {
           questionWhatYourPrice != '' &&
           questionWhatYourPrice !== null
         ) {
-          personalMovieDB.movies[questionWhatMovie] =
+          this.movies[questionWhatMovie] =
             questionWhatYourPrice;
           console.log('done');
         } else {
@@ -106,9 +114,10 @@ export function movie(): void {
 
   };
 
-  personalMovieDB.start();
+personalMovieDB.writeYourGenres();
 
-  console.log(personalMovieDB.count);
-
+personalMovieDB.genres.forEach((item, i) => {
+  console.log(`Любимый жанр #${i+1} - это ${item}`)
+})
 
 }
