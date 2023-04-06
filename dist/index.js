@@ -1,6 +1,7 @@
-import { tasks } from './tasks.js';
+import { domWork } from './dom-work.js';
 window.addEventListener('DOMContentLoaded', () => {
     // loggerMe();
     // movie();
-    tasks();
+    // tasks();
+    domWork();
 });
