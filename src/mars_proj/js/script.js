@@ -24,8 +24,13 @@ const movieDB = {
 const advImages = document.querySelectorAll('div.promo__adv img');
 const genreDiv = document.querySelector('div.promo__genre');
 const divPromo = document.querySelector('div.promo__bg');
+const inputFilm = document.querySelector('.adding__input');
 advImages.forEach(item => {
     item.remove();
 });
 genreDiv.textContent = 'драма';
 divPromo ? divPromo.style.cssText = 'background: url(./img/bg.jpg) center center/cover no-repeat;' : null;
+document.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log(inputFilm.value);
+});
