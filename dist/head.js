@@ -1,16 +1,15 @@
 export function loggerMe() {
-    const family = ['Peter', 'Ann', 'Alex', 'Linda'];
-    function showFamily(arr) {
-        let result = '';
-        if (Array.isArray(arr) && arr.length > 0) {
-            for (let i = 0; i < arr.length; i++) {
-                result += arr[i] + ' ';
-            }
-        }
-        return `Семья состоит из: ${result.trim()}`;
-    }
-    showFamily(family);
-    // const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
-    // function standardizeStrings(arr) {
-    // }
+    const shops = [
+        { rice: 500 },
+        { oil: 200 },
+        { bread: 50 },
+    ];
+    const budget = [5000, 15000, 25000];
+    const map = new Map();
+    shops.forEach((item, i) => {
+        map.set(item, budget[i]);
+    });
+    map.forEach((value, key, map) => {
+        console.log(value, key);
+    });
 }

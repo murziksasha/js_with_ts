@@ -1,8 +1,7 @@
-import { domWork } from './dom-work.js';
-import { tasks } from './tasks.js';
+import { loggerMe } from './head.js';
 window.addEventListener('DOMContentLoaded', () => {
-    // loggerMe();
+    loggerMe();
     // movie();
-    tasks();
+    // tasks();
     // domWork();
 });
