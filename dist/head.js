@@ -1,15 +1,9 @@
 export function loggerMe() {
-    const shops = [
-        { rice: 500 },
-        { oil: 200 },
-        { bread: 50 },
-    ];
-    const budget = [5000, 15000, 25000];
-    const map = new Map();
-    shops.forEach((item, i) => {
-        map.set(item, budget[i]);
+    const btns = document.querySelectorAll('button');
+    // console.log(btns[0].classList.item(0));
+    btns[0].addEventListener('click', () => {
+        btns[1].classList.toggle('red');
+        console.log(btns[1].classList.contains('red'));
     });
-    map.forEach((value, key, map) => {
-        console.log(value, key);
-    });
+    console.log(btns[0].classList);
 }

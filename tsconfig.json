@@ -14,11 +14,7 @@
     "target": "es2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "lib": [
       "DOM",
-<<<<<<< HEAD
       "ES2022",
-=======
-      "ES2020",
->>>>>>> 9e9411ab9bc41ba5739d71c48ceb5054fb95a022
       "DOM.Iterable",
       "ScriptHost"
     ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
