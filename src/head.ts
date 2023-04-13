@@ -6,12 +6,14 @@ const btns = document.querySelectorAll('button');
 
 btns[0].addEventListener('click', ()=>{
 
-  btns[1].classList.toggle('red');
-  console.log(btns[1].classList.contains('red'))
+  if(btns[3].classList.contains('red')){
+    btns[3].classList.remove('red');
+  } else {
+    btns[3].classList.add('red');
+  }
 })
 
 
-console.log(btns[0].classList)
 
 
 
