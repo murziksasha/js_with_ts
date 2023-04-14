@@ -9,15 +9,21 @@ parent.addEventListener('click', (e)=>{
 
   const target = e.target as HTMLButtonElement;
 
-  if(target && target.matches('[data-current = "1"]')){    
+  if(target && target.tagName === 'BUTTON'){    
     if(btns[3].classList.contains('red')){
       btns[3].classList.remove('red');
     } else {
       btns[3].classList.add('red');
     }
   }
+  
 
 })
+
+const btn = document.createElement('button') as HTMLButtonElement;
+btn.classList.add('blue');
+parent.insertAdjacentElement('beforeend', btn);
+
 
 
 
