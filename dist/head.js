@@ -1,19 +1,14 @@
 export function loggerMe() {
-    const btns = document.querySelectorAll('button');
-    const parent = document.querySelector('#first');
-    // console.log(btns[0].classList.item(0));
-    parent.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target && target.tagName === 'BUTTON') {
-            if (btns[3].classList.contains('red')) {
-                btns[3].classList.remove('red');
-            }
-            else {
-                btns[3].classList.add('red');
-            }
-        }
+    let intervalMy, count = 0;
+    document.querySelector('#btn1')?.addEventListener('click', () => {
+        intervalMy = setInterval(logger, 2000);
     });
-    const btn = document.createElement('button');
-    btn.classList.add('blue');
-    parent.insertAdjacentElement('beforeend', btn);
+    function logger() {
+        console.log('text');
+        count++;
+        if (count === 5) {
+            clearInterval(intervalMy);
+            console.log(`clear interval because count = ${count}`);
+        }
+    }
 }

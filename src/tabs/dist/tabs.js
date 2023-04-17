@@ -7,7 +7,6 @@ export function tabs() {
         if (target && target.matches('div.tabheader__item')) {
             tabsItem.forEach((item, i) => {
                 item.classList.remove('tabheader__item_active');
-                console.log(target.dataset.current);
                 if (target.dataset.current == String(i)) {
                     item.classList.add('tabheader__item_active');
                     tabBodyShow(i);
