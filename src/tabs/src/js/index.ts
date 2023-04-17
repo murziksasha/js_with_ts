@@ -5,8 +5,8 @@ import { timer } from './timer.js'
 window.addEventListener('DOMContentLoaded', () => {
 
 
-  tabs();
   timer();
+  tabs();
 
   
 })
