@@ -13,7 +13,7 @@ export function modal() {
     modal.classList.remove('hide');
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
-    clearTimeout(modalTimerId);
+    // clearTimeout(modalTimerId);
   }
 
   function modalOff() {
@@ -41,7 +41,7 @@ export function modal() {
   });
 
 
-  const modalTimerId = setTimeout(modalOn, 50000);
+  // const modalTimerId = setTimeout(modalOn, 50000);
 
   window.addEventListener('scroll', showModalByScroll);
 
